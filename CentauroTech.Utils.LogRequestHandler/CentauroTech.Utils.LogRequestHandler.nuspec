@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>Centauro Tech</owners>
+    <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <projectUrl>https://github.com/CentauroTech/CentauroTech.Utils.LogRequestHandler</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>$description$</releaseNotes>
+    <copyright>Copyright © Centauro Tech 2016</copyright>
+    <tags>log4net log request handler</tags>
+    <references>
+      <reference file="CentauroTech.Utils.LogRequestHandler.dll" />
+    </references>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" />
+      <frameworkAssembly assemblyName="System.Net" />
+      <frameworkAssembly assemblyName="System.Net.Http" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <!--.net 4.5.1 support-->
+    <file src="CentauroTech.Utils.LogRequestHandler.dll" target="lib\net451" />
+    <file src="CentauroTech.Utils.LogRequestHandler.xml" target="lib\net451" />
+    <!--.net 4.5.2 support-->
+    <file src="CentauroTech.Utils.LogRequestHandler.dll" target="lib\net452" />
+    <file src="CentauroTech.Utils.LogRequestHandler.xml" target="lib\net452" />
+    <!--.net 4.6 support-->
+    <file src="CentauroTech.Utils.LogRequestHandler.dll" target="lib\net46" />
+    <file src="CentauroTech.Utils.LogRequestHandler.xml" target="lib\net46" />
+    <!--.net 4.6.1 support-->
+    <file src="CentauroTech.Utils.LogRequestHandler.dll" target="lib\net461" />
+    <file src="CentauroTech.Utils.LogRequestHandler.xml" target="lib\net461" />
+  </files>
+</package>
