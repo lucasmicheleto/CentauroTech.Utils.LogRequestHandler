@@ -5,8 +5,8 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>$author$</authors>
-    <owners>Centauro Tech</owners>
-    <licenseUrl>http://www.gnu.org/licenses/gpl.html</licenseUrl>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/GPL-3.0</licenseUrl>
     <projectUrl>https://github.com/CentauroTech/CentauroTech.Utils.LogRequestHandler</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
