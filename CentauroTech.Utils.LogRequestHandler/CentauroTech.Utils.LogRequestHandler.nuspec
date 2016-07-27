@@ -8,9 +8,10 @@
     <owners>$author$</owners>
     <licenseUrl>https://opensource.org/licenses/GPL-3.0</licenseUrl>
     <projectUrl>https://github.com/CentauroTech/CentauroTech.Utils.LogRequestHandler</projectUrl>
+    <iconUrl>http://en.gravatar.com/userimage/4241994/3c65f3dcbad06bacd1800a6e0c55bb05.png?size=200</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>$description$</releaseNotes>
+    <summary>$description$</summary>
     <copyright>Copyright © Centauro Tech 2016</copyright>
     <tags>log4net log request handler</tags>
     <references>
