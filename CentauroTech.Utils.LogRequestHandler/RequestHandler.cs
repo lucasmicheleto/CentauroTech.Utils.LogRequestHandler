@@ -25,6 +25,7 @@ namespace CentauroTech.Utils.LogRequestHandler
         /// </summary>
         public RequestHandler() : base()
         {
+            InnerHandler = new HttpClientHandler();
         }
 
         /// <summary>
@@ -33,6 +34,7 @@ namespace CentauroTech.Utils.LogRequestHandler
         /// <param name="httpMessageHandler">The inner handler which is responsible for processing the HTTP response messages.</param>
         public RequestHandler(HttpMessageHandler httpMessageHandler) : base(httpMessageHandler)
         {
+            InnerHandler = httpMessageHandler;
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace CentauroTech.Utils.LogRequestHandler
         /// </summary>
         /// <param name="logger">The logger that will be used to log information</param>
         /// <param name="httpMessageHandler">The inner handler which is responsible for processing the HTTP response messages.</param>
-        public RequestHandler(ILog logger,HttpMessageHandler httpMessageHandler) : base(httpMessageHandler)
+        public RequestHandler(ILog logger, HttpMessageHandler httpMessageHandler) : base(httpMessageHandler)
         {
             Logger = logger;
         }
