@@ -25,7 +25,6 @@ namespace CentauroTech.Utils.LogRequestHandler
         /// </summary>
         public RequestHandler() : base()
         {
-            InnerHandler = new HttpClientHandler();
         }
 
         /// <summary>
