@@ -2,6 +2,7 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace CentauroTech.Utils.LogRequestHandler
             set { _logger = value; }
         }
 
-        private Encoding _defaultEncoding
+        private Encoding DefaultEncoding
         {
             get
             {    
@@ -35,10 +36,6 @@ namespace CentauroTech.Utils.LogRequestHandler
                     encoding = Encoding.UTF8;
                 }
                 return encoding;
-            }
-            set
-            {
-                _defaultEncoding = value;
             }
         }
 
@@ -193,8 +190,9 @@ namespace CentauroTech.Utils.LogRequestHandler
         {
             var content = string.Empty;
             if (httpContent != null)
-                content = useDefaultEncoding ? _defaultEncoding.GetString(await httpContent.ReadAsByteArrayAsync()) :
-                                                await httpContent.ReadAsStringAsync();
+            {
+                content = useDefaultEncoding ? DefaultEncoding.GetString(await httpContent.ReadAsByteArrayAsync()) : await httpContent.ReadAsStringAsync();
+            }
             return content;
         }
     }
