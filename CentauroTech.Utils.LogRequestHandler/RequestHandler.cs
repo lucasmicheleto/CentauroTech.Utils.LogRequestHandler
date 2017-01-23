@@ -44,6 +44,7 @@ namespace CentauroTech.Utils.LogRequestHandler
         /// </summary>
         public RequestHandler() : base()
         {
+            InnerHandler = InnerHandler == null ? new HttpClientHandler() : InnerHandler;
         }
 
         /// <summary>
@@ -87,14 +88,14 @@ namespace CentauroTech.Utils.LogRequestHandler
                 {
                     try
                     {
-                        await LogRequest(request, requestUid);
+                        await LogRequestAsync(request, requestUid);
                     }
                     catch (InvalidOperationException)
                     {
                         Logger.Warn("Unable to parse content! Now trying with the default encoding...");
                         try
                         {
-                            await LogRequest(request, requestUid, true);
+                            await LogRequestAsync(request, requestUid, true);
                         }
                         catch
                         {
@@ -118,7 +119,7 @@ namespace CentauroTech.Utils.LogRequestHandler
                     {
                         if (response != null)
                         {
-                             await LogResponse(response, requestUid);
+                             await LogResponseAsync(response, requestUid);
                         }
                     }
                     catch (InvalidOperationException)
@@ -126,7 +127,7 @@ namespace CentauroTech.Utils.LogRequestHandler
                         Logger.Warn("Unable to parse content! Now trying with the default encoding...");
                         try
                         {
-                            await LogResponse(response, requestUid, true);
+                            await LogResponseAsync(response, requestUid, true);
                         }
                         catch
                         {
@@ -158,7 +159,7 @@ namespace CentauroTech.Utils.LogRequestHandler
             return (int)httpStatusCode;
         }
 
-        private async Task LogRequest(HttpRequestMessage request, Guid messageUid, bool useDefaultEncoding = false)
+        private async Task LogRequestAsync(HttpRequestMessage request, Guid messageUid, bool useDefaultEncoding = false)
         {
             Logger.Debug(
             new
@@ -168,11 +169,11 @@ namespace CentauroTech.Utils.LogRequestHandler
                 Uri = request?.RequestUri.ToString(),
                 Method = request?.Method.ToString(),
                 Headers = request?.Headers,
-                Content = await GetContent(request.Content, useDefaultEncoding)
+                Content = await GetContentAsync(request.Content, useDefaultEncoding)
             });
         }
 
-        private async Task LogResponse(HttpResponseMessage response, Guid messageUid, bool useDefaultEncoding = false)
+        private async Task LogResponseAsync(HttpResponseMessage response, Guid messageUid, bool useDefaultEncoding = false)
         {
             Logger.Debug(
             new
@@ -182,11 +183,11 @@ namespace CentauroTech.Utils.LogRequestHandler
                 StatusCode = GetSatsusCodeNumber(response.StatusCode),
                 ReasonPhrase = response.ReasonPhrase,
                 Headers = response?.Headers,
-                Content = await GetContent(response.Content, useDefaultEncoding)
+                Content = await GetContentAsync(response.Content, useDefaultEncoding)
             });
         }
 
-        private async Task<string> GetContent(HttpContent httpContent, bool useDefaultEncoding)
+        private async Task<string> GetContentAsync(HttpContent httpContent, bool useDefaultEncoding)
         {
             var content = string.Empty;
             if (httpContent != null)
